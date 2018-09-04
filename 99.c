@@ -4,13 +4,15 @@
 #include <locale.h>
 
 typedef struct {
-    char name[60], rg[20], phone[20], address[200], add[300], area[200], schedule_begin[20], schedule_end[20];
+    char name[60], rg[20], phone[20], address[200], add[300], area[200], schedule_begin[5], schedule_end[5];
+    // Matrícula.
     int id;
 } intern;
 
 intern trainees[1024];
 
 void create(int q);
+void show(int q);
 int menu();
 
 void main(void){
@@ -19,9 +21,12 @@ void main(void){
     do{
         m = menu();
         switch(m){
-            case 1:
+            case 1: 
                 create(q);
                 q++;
+                break;
+            case 5:
+                show(q);
                 break;
         }
     }while(m != 6);
@@ -40,6 +45,7 @@ int menu(){
     scanf("%d", &menu);
     return menu;
 }
+
 
 void create(int q){
     printf("\n\nCADASTRANDO O ESTAGIÁRIO NÚMERO %d\n\n", q+1);
@@ -67,4 +73,12 @@ void create(int q){
     printf("Matrícula: ");
     fflush(stdin);
     scanf("%d", &trainees[q].id);
+}
+
+void show(int q){
+    for(int i = 0; i < q; i++){
+        printf("Nome: %s\n", trainees[i].name);
+        printf("Matricula %i\n", trainees[i].id);
+        printf("\n");
+    }
 }
