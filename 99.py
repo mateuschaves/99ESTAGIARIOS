@@ -1,3 +1,12 @@
+"""
+    And I thought I was yours forever
+    Maybe I was mistaken
+    But I just cannot manage to make it through the day
+    Without thinking of you lately
+
+    Fireside - Arctic Monkeys ♪♫
+"""
+
 import os
 
 PATH = './estagiarios/'
