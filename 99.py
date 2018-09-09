@@ -18,7 +18,8 @@ def registrar(data):
     if(dir.count(data[0] + '.txt') != 0):
         print('Já existe um estagiário com essa matrícula !')
     else:
-        tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ', 'Horário de entrada: ', 'Horário de saída: ']
+        tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
+               'Horário de entrada: ', 'Horário de saída: ']
         # Criando um arquivo para o novo estagiário.
         arquivo = open(PATH+data[0]+'.txt', 'w+', encoding="utf8")
         # Escrevendo os dados do estagiário no arquivo.
