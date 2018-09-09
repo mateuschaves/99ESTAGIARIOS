@@ -10,13 +10,14 @@
 import os
 
 PATH = './estagiarios/'
-dir = os.listdir(PATH)
-
+def att(lista):
+    dir = lista
 # Cria um registro de estagiários.
 def registrar(data):
+    dir = os.listdir(PATH)
     # Verificando se existe algum arquivo com a matrícula informada.
     if(dir.count(data[0] + '.txt') != 0):
-        print('Já existe um estagiário com essa matrícula !')
+        print('\n\nJá existe um estagiário com essa matrícula !\n\n')
     else:
         tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
                'Horário de entrada: ', 'Horário de saída: ']
@@ -25,11 +26,12 @@ def registrar(data):
         # Escrevendo os dados do estagiário no arquivo.
         for pos, i in enumerate(data):
             arquivo.write('{}{}'.format(tag[pos], i + '\n'))
-
+        att(os.listdir(PATH))
 # Mostra todos os estagiários cadastrados.
 def mostrar():
+    dir = os.listdir(PATH)
     if len(dir) == 0:
-        print('Não existe nenhum registro de estagiário !')
+        print('\n\nNão existe nenhum registro de estagiário !\n\n')
     # Percorrendo a lista de arquivos.
     for i in dir:
         # Abrindo o arquivo de registro do estagiário.
@@ -39,6 +41,7 @@ def mostrar():
 
 # Mostra um estagiário.
 def perfil(matricula):
+    dir = os.listdir(PATH)
     # Verificando se a matrícula é igual ao nome do arquivo.
     if dir.count(matricula + '.txt') != 0:
         # Abrindo o arquivo do estagiário.
@@ -47,10 +50,11 @@ def perfil(matricula):
         return (arquivo.read())
     else:
         # Quando nenhum estagiário com a matrícula informada é encontrado.
-        return 'Estagiário não encontrado !'
+        print('\n\nEstagiário não encontrado !\n\n')
 
 # Edita um estagiário.
 def editar(data):
+    dir = os.listdir(PATH)
     # Verificando se existe algum arquivo com a matrícula informada.
     if (dir.count(data[0] + '.txt') != 0):
         # Deletando o antigo arquivo.
@@ -64,16 +68,58 @@ def editar(data):
             arquivo.write('{}{}'.format(tag[pos], i + '\n'))
     else:
         # Estagiário não encontrado.
-        return 'O estagiário informado não existe !'
+        print('\n\nO estagiário informado não existe !\n\n')
 
 # Deleta um estagiário.
 def deletar(matricula):
+    dir = os.listdir(PATH)
     # Verificando se existe algum arquivo com a matrícula informada.
     if (dir.count(matricula + '.txt') != 0):
         # Deletando o arquivo.
         os.remove(PATH+matricula+'.txt')
-        return 'Estagiário deletado com suesso !'
+        print('\n\nEstagiário deletado com sucesso !\n\n')
     else:
         # Estagiário não encontrado.
-        return 'Estagiário não encontrado !'
+        print('\n\nEstagiário não encontrado !\n\n')
+
+# Menu da aplicação.
+def menu():
+    print('[1] Cadastrar estagiário.')
+    print('[2] Mostrar um estagiário.')
+    print('[3] Mostrar todos estagiários.')
+    print('[4] Editar estagiário.')
+    print('[5] Deletar estagiário.')
+    print('[0] Sair.\n')
+    escolha = int(input('Escolha uma opção: '))
+    return escolha
+
+# Enfeita atela.
+def enfeite():
+    print('=-'*30)
+
+enfeite()
+print('99ESTAGIÁRIOS'.center(60))
+enfeite()
+while True:
+    escolha = menu()
+    if escolha == 1:
+        tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
+               'Horário de entrada: ', 'Horário de saída: ']
+        data = [ input('{}'.format(i)) for i in tag]
+        registrar(data)
+    elif escolha == 2:
+        matricula = input('Digite a matrícula do estagiário: ')
+        perfil(matricula)
+    elif escolha == 3:
+        mostrar()
+    elif escolha == 4:
+        tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
+               'Horário de entrada: ', 'Horário de saída: ']
+        data = [input('{}'.format(i)) for i in tag]
+        editar(data)
+    elif escolha == 5:
+        matricula = input('Digite a matrícula do estagiário: ')
+        deletar(matricula)
+    elif escolha == 0:
+        break
 
