@@ -8,6 +8,11 @@
 """
 
 import os
+from pygame import mixer # Load the required library
+
+mixer.init()
+mixer.music.load('troinha.mp3')
+mixer.music.play()
 
 PATH = './estagiarios/'
 dir = os.listdir(PATH)
@@ -76,3 +81,6 @@ def deletar(matricula):
     else:
         # Estagiário não encontrado.
         return 'Estagiário não encontrado !'
+
+# Só pra o programa não encerrar
+input()
