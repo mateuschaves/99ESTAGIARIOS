@@ -10,8 +10,7 @@
 import os
 
 PATH = './estagiarios/'
-def att(lista):
-    dir = lista
+
 # Cria um registro de estagiários.
 def registrar(data):
     dir = os.listdir(PATH)
@@ -47,7 +46,7 @@ def perfil(matricula):
         # Abrindo o arquivo do estagiário.
         arquivo = open(PATH+matricula+'.txt', 'r+', encoding="utf8")
         # Mostrando o conteúdo do arquivo.
-        return (arquivo.read())
+        print(arquivo.read())
     else:
         # Quando nenhum estagiário com a matrícula informada é encontrado.
         print('\n\nEstagiário não encontrado !\n\n')
@@ -56,6 +55,7 @@ def perfil(matricula):
 def editar(data):
     dir = os.listdir(PATH)
     # Verificando se existe algum arquivo com a matrícula informada.
+    print(dir.count(data[0] + '.txt'))
     if (dir.count(data[0] + '.txt') != 0):
         # Deletando o antigo arquivo.
         os.remove(PATH+data[0]+'.txt')
