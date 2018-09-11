@@ -25,7 +25,6 @@ def registrar(data):
         # Escrevendo os dados do estagiário no arquivo.
         for pos, i in enumerate(data):
             arquivo.write('{}{}'.format(tag[pos], i + '\n'))
-        att(os.listdir(PATH))
 # Mostra todos os estagiários cadastrados.
 def mostrar():
     dir = os.listdir(PATH)
@@ -53,8 +52,10 @@ def perfil(matricula):
 
 # Edita um estagiário.
 def editar(data):
-    dir = os.listdir(PATH)
-    # Verificando se existe algum arquivo com a matrícula informada.
+    #dir = os.listdir(PATH)
+    print(data[0])
+
+    #Verificando se existe algum arquivo com a matrícula informada.
     print(dir.count(data[0] + '.txt'))
     if (dir.count(data[0] + '.txt') != 0):
         # Deletando o antigo arquivo.
@@ -65,7 +66,7 @@ def editar(data):
                'Horário de entrada: ', 'Horário de saída: ']
         # Escrevendo as informações do estagiário no arquivo.
         for pos, i in enumerate(data):
-            arquivo.write('{}{}'.format(tag[pos], i + '\n'))
+           arquivo.write('{}{}'.format(tag[pos], i + '\n'))
     else:
         # Estagiário não encontrado.
         print('\n\nO estagiário informado não existe !\n\n')
