@@ -52,11 +52,8 @@ def perfil(matricula):
 
 # Edita um estagiário.
 def editar(data):
-    #dir = os.listdir(PATH)
-    print(data[0])
-
+    dir = os.listdir(PATH)
     #Verificando se existe algum arquivo com a matrícula informada.
-    print(dir.count(data[0] + '.txt'))
     if (dir.count(data[0] + '.txt') != 0):
         # Deletando o antigo arquivo.
         os.remove(PATH+data[0]+'.txt')
@@ -124,3 +121,4 @@ while True:
     elif escolha == 0:
         break
 
+0
