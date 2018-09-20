@@ -33,7 +33,7 @@ def mostrar():
     if len(dir) == 0:
         print('\n\nNão existe nenhum registro de estagiário !\n\n')
     else:
-        print("\nListando {} estagiários cadastrados !\n".format(len(dir)))
+        print("\nListando {} estagiário(s) cadastrado(s) !\n".format(len(dir)))
         # Percorrendo a lista de arquivos.
         for i in dir:
             # Abrindo o arquivo de registro do estagiário.
@@ -93,8 +93,12 @@ def menu():
     print('[3] Mostrar todos estagiários.')
     print('[4] Editar estagiário.')
     print('[5] Deletar estagiário.')
-    print('[0] Sair.\n')
-    escolha = int(input('Escolha uma opção: '))
+    print('[6] Sair.\n')
+    escolha = input('Escolha uma opção: ')
+    if(escolha.isnumeric()):
+        escolha = int(escolha)
+    else:
+        return False
     return escolha
 
 # Enfeita atela.
@@ -105,7 +109,10 @@ enfeite()
 print('99ESTAGIÁRIOS'.center(60))
 enfeite()
 while True:
-    escolha = menu()
+    while True:
+        escolha = menu()
+        if escolha != False:
+            break
     if escolha == 1:
         tag = ['Matricula (Apenas números): ', 'Nome: ', 'RG (Apenas números): ', 'CPF (Apenas números): ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
                'Horário de entrada: ', 'Horário de saída: ']
@@ -130,5 +137,7 @@ while True:
     elif escolha == 5:
         matricula = input('Digite a matrícula do estagiário: ')
         deletar(matricula)
-    elif escolha == 0:
+    elif escolha == 6:
         break
+    else:
+        printf("\nEscolha uma opção entre 1 e 6 !\n")
