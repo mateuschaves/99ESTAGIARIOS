@@ -1,0 +1,10 @@
+Matricula: 1002
+Nome: Eduarda, a deusa do dev
+RG: 65645
+CPF: 22215
+Endereço: Surubim
+Celular: 81 99721123
+Curso: SI
+Observação: Manja de C e C++
+Horário de entrada: 08:00
+Horário de saída: 12:00

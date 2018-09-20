@@ -25,17 +25,21 @@ def registrar(data):
         # Escrevendo os dados do estagiário no arquivo.
         for pos, i in enumerate(data):
             arquivo.write('{}{}'.format(tag[pos], i + '\n'))
+        # Informando que o estagiário foi cadastrado.
+        print("\nO estagiário de matrícula {} foi cadastrado com sucesso !\n".format(data[0]))
 # Mostra todos os estagiários cadastrados.
 def mostrar():
     dir = os.listdir(PATH)
     if len(dir) == 0:
         print('\n\nNão existe nenhum registro de estagiário !\n\n')
-    # Percorrendo a lista de arquivos.
-    for i in dir:
-        # Abrindo o arquivo de registro do estagiário.
-        estagiario = open(PATH+i, 'r+', encoding="utf8")
-        # Mostrando o conteúdo do arquivo.
-        print(estagiario.read())
+    else:
+        print("\nListando {} estagiários cadastrados !\n".format(len(dir)))
+        # Percorrendo a lista de arquivos.
+        for i in dir:
+            # Abrindo o arquivo de registro do estagiário.
+            estagiario = open(PATH+i, 'r+', encoding="utf8")
+            # Mostrando o conteúdo do arquivo.
+            print(estagiario.readline() + estagiario.readline())
 
 # Mostra um estagiário.
 def perfil(matricula):
@@ -44,6 +48,7 @@ def perfil(matricula):
     if dir.count(matricula + '.txt') != 0:
         # Abrindo o arquivo do estagiário.
         arquivo = open(PATH+matricula+'.txt', 'r+', encoding="utf8")
+        print("\nEstagiário encontrado !\n")
         # Mostrando o conteúdo do arquivo.
         print(arquivo.read())
     else:
@@ -64,6 +69,7 @@ def editar(data):
         # Escrevendo as informações do estagiário no arquivo.
         for pos, i in enumerate(data):
            arquivo.write('{}{}'.format(tag[pos], i + '\n'))
+        print("\nEstagiário editado com sucesso !\n")
     else:
         # Estagiário não encontrado.
         print('\n\nO estagiário informado não existe !\n\n')
@@ -101,24 +107,28 @@ enfeite()
 while True:
     escolha = menu()
     if escolha == 1:
-        tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
+        tag = ['Matricula (Apenas números): ', 'Nome: ', 'RG (Apenas números): ', 'CPF (Apenas números): ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
                'Horário de entrada: ', 'Horário de saída: ']
         data = [ input('{}'.format(i)) for i in tag]
-        registrar(data)
+        if(data[0].isnumeric() and data[2].isnumeric() and data[3].isnumeric()):
+            registrar(data)
+        else:
+            print("\nInforme corretamente os campos, digite apenas números nos campos indicados ! \n")
     elif escolha == 2:
         matricula = input('Digite a matrícula do estagiário: ')
         perfil(matricula)
     elif escolha == 3:
         mostrar()
     elif escolha == 4:
-        tag = ['Matricula: ', 'Nome: ', 'RG: ', 'CPF: ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
+        tag = ['Matricula (Apenas números): ', 'Nome: ', 'RG (Apenas números): ', 'CPF (Apenas números): ', 'Endereço: ', 'Celular: ', 'Curso: ', 'Observação: ',
                'Horário de entrada: ', 'Horário de saída: ']
         data = [input('{}'.format(i)) for i in tag]
-        editar(data)
+        if(data[0].isnumeric() and data[2].isnumeric() and data[3].isnumeric()):
+            editar(data)
+        else:
+            print("\nInforme corretamente os campos, digite apenas números nos campos indicados ! \n")
     elif escolha == 5:
         matricula = input('Digite a matrícula do estagiário: ')
         deletar(matricula)
     elif escolha == 0:
         break
-
-0
